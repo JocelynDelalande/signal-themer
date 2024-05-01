@@ -6,7 +6,7 @@ setup_dir = Path(__file__).resolve().parent
 setup(
     include_package_data=True,
     name='signal-themer',
-    version='0.0.1',
+    version='1.0',
     author='Kritagya Bhattarai(CalfMoon)',
     author_email='kritagyabhattarai@proton.me',
     packages=['signal_themer'],
