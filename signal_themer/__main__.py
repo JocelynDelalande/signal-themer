@@ -19,6 +19,16 @@ def temp_path():
         case "Windows":
             return os.path.join(os.getenv("LOCALAPPDATA"), r"temp\signal-themer")
 
+# add @import css in front of a file
+def import_theme(file_path, theme):
+    with open(file_path, "r+") as f:
+        if f.readline().split(" ",1)[0] != "@import":
+            f.seek(0)
+        data = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(f"@import '{theme}';\n"+data)
+
 # reads user argument to read theme path
 def selected_theme():
     if(len(sys.argv) != 1):
