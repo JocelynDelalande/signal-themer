@@ -1,7 +1,23 @@
 import os 
 import platform
 import sys
+import shutil
+import asarPy
 
+
+# main function that extracts the asar, calls other functions and packs it
+def theme_injector():
+    app = app_path()
+    temp = temp_path()
+    theme_path = selected_theme()
+    theme_name = os.path.split(theme_path)[1]
+
+    asarPy.extract_asar(app, temp)
+    shutil.copy(theme_path, os.path.join(temp, "stylesheets")) 
+    import_theme(os.path.join(temp, "stylesheets", "manifest.css"), theme)
+    asarPy.pack_asar(temp, app)
+
+    shutil.rmtree(temp)
 
 # returns path of signal-desktop
 def app_path():
