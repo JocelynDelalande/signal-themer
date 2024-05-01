@@ -12,9 +12,12 @@ def theme_injector():
     theme_path = selected_theme()
     theme_name = os.path.split(theme_path)[1]
 
+    if os.path.isdir(temp):
+        shutil.rmtree(temp)
+        
     asarPy.extract_asar(app, temp)
     shutil.copy(theme_path, os.path.join(temp, "stylesheets")) 
-    import_theme(os.path.join(temp, "stylesheets", "manifest.css"), theme)
+    import_theme(os.path.join(temp, "stylesheets", "manifest.css"), theme_name)
     asarPy.pack_asar(temp, app)
 
     shutil.rmtree(temp)
