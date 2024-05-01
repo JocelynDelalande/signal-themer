@@ -54,3 +54,6 @@ def selected_theme():
     elif(!sys.argv[1].endswith(".css")):
         sys.exit("The theme must be a css file.")
     return sys.argv[1]
+
+if __file__ == "__main__":
+    theme_injector()
