@@ -1,5 +1,6 @@
 import os 
 import platform
+import sys
 
 
 # returns path of signal-desktop
@@ -17,3 +18,13 @@ def temp_path():
             return "/temp/signal-themer/"
         case "Windows":
             return os.path.join(os.getenv("LOCALAPPDATA"), r"temp\signal-themer")
+
+# reads user argument to read theme path
+def selected_theme():
+    if(len(sys.argv) != 1):
+        sys.exit("Wrong number of argument, try `signal-themer <path-to-theme.css>`")
+    elif(os.path.isfile(sys.argv[1])):
+        sys.exit("The theme you entered doesn't exist")
+    elif(!sys.argv[1].endswith(".css")):
+        sys.exit("The theme must be a css file.")
+    return sys.argv[1]
