@@ -47,11 +47,11 @@ def import_theme(file_path, theme):
 
 # reads user argument to read theme path
 def selected_theme():
-    if(len(sys.argv) != 1):
+    if(len(sys.argv) != 2):
         sys.exit("Wrong number of argument, try `signal-themer <path-to-theme.css>`")
-    elif(os.path.isfile(sys.argv[1])):
-        sys.exit("The theme you entered doesn't exist")
-    elif(!sys.argv[1].endswith(".css")):
+    elif(not os.path.isfile(sys.argv[1])):
+        sys.exit("The theme you entered doesn't exist! Try again.")
+    elif(not sys.argv[1].endswith(".css")):
         sys.exit("The theme must be a css file.")
     return sys.argv[1]
 
