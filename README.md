@@ -5,7 +5,7 @@ A script for injecting theme into [signal-desktop](https://github.com/signalapp/
 - python-pip
 - pipx
 ## Installation
-1. Install applications in requirements section if you don't have them. (search online if you don't know how)
+1. Install applications in requirements section if you don't have them. [Guide](#install-requirements-guide)
 2. Install this script with `pipx install signal-themer`
 ## Usage
 ### Linux
@@ -15,6 +15,14 @@ A script for injecting theme into [signal-desktop](https://github.com/signalapp/
 ### Windows
 1. Run `signal-themer <path\to\theme.css>`
 2. Launch Signal and enjoy!
+## Install Requirements Guide
+### Windows
+1. Download python if you don't have it from [their websise](https://www.python.org/downloads/) or from microsoft store.
+2. Run `py -m pip install --user pipx` if you install python from website or replace `py` with `python3` if you downloaded from microsoft store inorder to install pipx.
+3. Add pipx to path by running `%LOCALAPPDATA%\python\python<version>\Scripts\pipx.exe ensurepath` replace `<version>` with the version of python you have installed.
+4. Close and open terminal again.
+### Linux
+Your distro probably has a package for python and pipx(pipx is called python-pipx in some distros)
 ## Removal
 Currently there is no 'clean' way to remove the theme but it might be added in the future.
 For now, create an empty css file and use that as theme.
