@@ -10,11 +10,13 @@ A script for injecting theme into [signal-desktop](https://github.com/signalapp/
 ## Usage
 ### Linux
 **Note: Running this script requires sudo permission in linux. If you are unsure about this, the script is only a few lines and you can go thorough it really quickly.**
-1. Run `sudo signal-themer <path/to/theme.css>`
-2. Launch Signal and enjoy!
+1. Close signal. (including from tray)
+2. Run `sudo signal-themer <path/to/theme.css>`
+3. Launch Signal and enjoy!
 ### Windows
-1. Run `signal-themer <path\to\theme.css>`
-2. Launch Signal and enjoy!
+1. Close signal. (including from tray)
+2. Run `signal-themer <path\to\theme.css>`
+3. Launch Signal and enjoy!
 ## Install Requirements Guide
 ### Windows
 1. Download python if you don't have it from [their websise](https://www.python.org/downloads/) or from microsoft store.
