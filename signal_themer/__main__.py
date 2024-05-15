@@ -15,7 +15,10 @@ def theme_injector():
     if os.path.isdir(temp):
         shutil.rmtree(temp)
         
-    asarPy.extract_asar(app, temp)
+    try:
+        asarPy.extract_asar(app, temp)
+    except PermissionError:
+        sys.exit("PermissionError: please use the command with sudo.")
     shutil.copy(theme_path, os.path.join(temp, "stylesheets")) 
     import_theme(os.path.join(temp, "stylesheets", "manifest.css"), theme_name)
     asarPy.pack_asar(temp, app)
