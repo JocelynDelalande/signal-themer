@@ -10,7 +10,6 @@ def theme_injector():
     app = app_path()
     temp = temp_path()
     theme_path = selected_theme()
-    theme_name = os.path.split(theme_path)[1]
 
     if os.path.isdir(temp):
         shutil.rmtree(temp)
@@ -19,8 +18,8 @@ def theme_injector():
         asarPy.extract_asar(app, temp)
     except PermissionError:
         sys.exit("PermissionError: please use the command with sudo.")
-    shutil.copy(theme_path, os.path.join(temp, "stylesheets")) 
-    import_theme(os.path.join(temp, "stylesheets", "manifest.css"), theme_name)
+    shutil.copy(theme_path, os.path.join(temp, "stylesheets", "theme.css")) 
+    import_theme(os.path.join(temp, "stylesheets", "manifest.css"))
     asarPy.pack_asar(temp, app)
 
     shutil.rmtree(temp)
@@ -42,14 +41,14 @@ def temp_path():
             return os.path.join(os.getenv("LOCALAPPDATA"), r"temp\signal-themer")
 
 # add @import css in front of a file
-def import_theme(file_path, theme):
+def import_theme(file_path):
     with open(file_path, "r+") as f:
         if f.readline().split(" ",1)[0] != "@import":
             f.seek(0)
         data = f.read()
         f.seek(0)
         f.truncate()
-        f.write(f"@import '{theme}';\n"+data)
+        f.write("@import 'theme.css';\n"+data)
 
 # reads user argument to read theme path
 def selected_theme():
